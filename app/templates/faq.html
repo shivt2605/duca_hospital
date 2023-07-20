@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<main>
+    <!-- page-banner-area-start -->
+    {% for i in bg %}
+    <div class="page-banner-area page-banner-height" data-background="{{i.fqa.url}}">
+        {% endfor %}
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="page-banner-content text-center">
+                        <h4 class="breadcrumb-title">FAQs</h4>
+                        <div class="breadcrumb-two">
+                            <nav>
+                               <nav class="breadcrumb-trail breadcrumbs">
+                                  <ul class="breadcrumb-menu">
+                                     <li class="breadcrumb-trail">
+                                        <a href="index.html"><span>Home</span></a>
+                                     </li>
+                                     <li class="trail-item">
+                                        <span>FAQs</span>
+                                     </li>
+                                  </ul>
+                               </nav> 
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- page-banner-area-end -->
+
+    <!-- faq-area-start -->
+    <div class="faq-area mt-70 mb-60">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 mx-auto">
+                    <div class="single-faqs mb-40">
+                        <div class="faq-title">
+                            <h5>Frequently Asked Questions</h5>
+                        </div>
+                        <div class="faq-content mt-10">
+                            <div class="accordion" id="accordionExample1">                                  
+                                {% for s in fqa %}
+                                  <div class="accordion-item">
+                                     <h2 class="accordion-header" id="headingThree">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                            {{s.question}}
+                                        </button>
+                                     </h2>
+                                     <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                        <p>{{s.answers}}</p>
+                                        </div>
+                                     </div>
+                                  </div>
+                                  {% endfor %}
+                             </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- faq-area-end -->
+
+    
+
+</main>
+{% endblock content %}

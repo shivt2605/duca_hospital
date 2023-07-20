@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{{service}}
+<main>
+    <!-- breadcrumb__area-start -->
+    <section class="breadcrumb__area box-plr-75">
+        <div class="container">
+            <div class="row">
+                <div class="col-xxl-12">
+                    <div class="breadcrumb__wrapper">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                              <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                             
+                            </ol>
+                          </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb__area-end -->
+
+    <!-- product-details-start -->
+    <div class="product-details">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6">
+                    <div class="product__details-nav d-sm-flex align-items-start">
+
+                        <ul class="nav nav-tabs flex-sm-column justify-content-between" id="productThumbTab" role="tablist">
+
+                            {% for i in doctor.doctor_image_set.all %}
+                            <li class="nav-item" role="presentation">
+                              <button class="nav-link " id="thumb{{i.id}}-tab" data-bs-toggle="tab" data-bs-target="#thumb{{i.id}}" type="button" role="tab" aria-controls="thumb{{i.id}}" aria-selected="true">
+                                  <img src="{{i.image.url}}" alt=""style="width: 85px; height: 85px;" >
+                              </button>
+                            </li>
+                            {% endfor %}
+                            
+                        </ul>
+
+                        <div class="product__details-thumb">
+                            <div class="tab-content" id="productThumbContent">
+
+                                <div class="tab-pane fade show active" id="thumb" role="tabpanel" aria-labelledby="thumb-tab">
+                                    <div class="product__details-nav-thumb w-img">
+                                        <img src="{{doctor.image.url}}" alt="" >
+                                    </div>
+                                </div>
+
+                                {% for i in doctor.doctor_image_set.all %}
+                                <div class="tab-pane fade show " id="thumb{{i.id}}" role="tabpanel" aria-labelledby="thumb{{i.id}}-tab">
+                                    <div class="product__details-nav-thumb w-img">
+                                        <img src="{{i.image.url}}" alt="" >
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                
+                              </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="product__details-content">
+                        <h6>{{doctor.name}}</h6>
+                        <div class="pd-rating mb-10">
+
+                        </div>
+                        <div class="price mb-10">
+                            <span>{{doctor.qualification}}</span>
+                        </div>
+                        <div class="features-des mb-20 mt-10">
+                            
+                        </div>
+                        
+                        <div class="details-meta">
+                            <p>{{doctor.speciality}}</p>
+                        </div>
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- product-details-end -->
+
+    <!-- product-details-des-start -->
+    <div class="product-details-des mt-40 mb-60">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="product__details-des-tab">
+                        <ul class="nav nav-tabs" id="productDesTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                              <button class="nav-link active" id="des-tab" data-bs-toggle="tab" data-bs-target="#des" type="button" role="tab" aria-controls="des" aria-selected="true">Description </button>
+                            </li>
+                            
+                          </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content" id="prodductDesTaContent">
+                <div class="tab-pane fade active show" id="des" role="tabpanel" aria-labelledby="des-tab">
+                    <div class="product__details-des-wrapper">
+                        <p class="des-text mb-35">{{doctor.description | safe}}</p>
+                        
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- product-details-des-end -->
+
+</main>
+        {% endblock content %}

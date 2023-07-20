@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- offcanvas area start -->
+<main>
+    <!-- page-banner-area-start -->
+    {% for i in bg %}
+    <div class="page-banner-area page-banner-height" data-background="{{i.contact.url}}">
+     
+    {% endfor %}   
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="page-banner-content text-center">
+                        <h4 class="breadcrumb-title">Contact Us</h4>
+                        <div class="breadcrumb-two">
+                            <nav>
+                               <nav class="breadcrumb-trail breadcrumbs">
+                                  <ul class="breadcrumb-menu">
+                                     <li class="breadcrumb-trail">
+                                        <a href="index.html"><span>Home</span></a>
+                                     </li>
+                                     <li class="trail-item">
+                                        <span>Contact Us</span>
+                                     </li>
+                                  </ul>
+                               </nav> 
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- page-banner-area-end -->
+
+    <!-- location-area-start -->
+    <div class="location-area pt-70 pb-25 col-md-8 mx-auto">
+        <div class="container">
+            {% for i in contact %}
+            <div class="row mb-25">
+                <div class="col-md-8 mx-auto">
+                    <div class="abs-section-title text-center">
+                        <span>LOCATION STORE</span>
+                        <h4>Where We Are</h4>
+                        <p>{{i.where_we_are}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6">
+                    <div class="location-item mb-30">
+                        
+                        <h6>{{i.form_name}}</h6>
+                        <div class="sm-item-loc sm-item-border mb-20">
+                            <div class="sml-icon mr-20">
+                                <i class="fal fa-map-marker-alt"></i>
+                            </div>
+                            <div class="sm-content">
+                                <span>Find us</span>
+                                <p>{{i.address}} </p>  
+                            </div>
+                        </div>
+                        <div class="sm-item-loc sm-item-border mb-20">
+                            <div class="sml-icon mr-20">
+                                <i class="fal fa-phone-alt"></i>
+                            </div>
+                            <div class="sm-content">
+                                <span>Call us</span>
+                                <p><a href="tel:+91{{i.number}}">{{i.number}}</a></p>  
+                            </div>
+                        </div>
+                        <div class="sm-item-loc mb-20">
+                            <div class="sml-icon mr-20">
+                                <i class="fal fa-envelope"></i>
+                            </div>
+                            <div class="sm-content">
+                                <span>Mail us</span>
+                                <p><a href="mailto:{{i.email_id}}"><span class="__cf_email__" data-cfemail="3744435845527754585a4756594e1954585a">{{i.email_id}}</span></a></p>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+                <div class="col-xl-6 col-lg-6 col-md-6">
+                    <div class="location-item mb-30">
+                        
+                        <div class="basic-login">
+                            <h5>Book Appointment</h5>
+                            <form action="#">
+                                <label for="username">User name  <span>*</span></label>
+                                <input id="username" type="text" placeholder="Enter Your Name">
+                                <label for="username">User Mobile No.  <span>*</span></label>
+                                <input id="mobileno." type="text" placeholder="Enter Mobile No.">
+                                <label for="email-id">Email Address <span>*</span></label>
+                                <input id="email-id" type="text" placeholder="Email address...">
+                                
+                                <div class="login-action mb-10 fix">
+                                    <p>Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our <a href="#">privacy policy</a>.</p>
+                                </div>
+                                <a href="login.html" class="tp-in-btn w-100">Register</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- location-area-end -->
+
+    <!-- cmamps-area-start -->
+    {% for i in contact %}
+    <div class="cmamps-area"><iframe src="{{i.location_map}}" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    <!-- cmamps-area-end -->
+    {% endfor %}
+{% endblock content %}

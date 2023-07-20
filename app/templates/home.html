@@ -1,0 +1,499 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <!-- offcanvas area start -->
+    <div class="offcanvas__area">
+        <div class="offcanvas__wrapper">
+        <div class="offcanvas__close">
+            <button class="offcanvas__close-btn" id="offcanvas__close-btn">
+                <i class="fal fa-times"></i>
+            </button>
+        </div>
+        <div class="offcanvas__content">
+            <div class="offcanvas__logo mb-40">
+                <a href="index.html">
+                <img src="{% static 'assets/img/logo/logo-white.png' %}" alt="logo">
+                </a>
+            </div>
+            <div class="offcanvas__search mb-25">
+                <form action="#">
+                    <input type="text" placeholder="What are you searching for?">
+                    <button type="submit" ><i class="far fa-search"></i></button>
+                </form>
+            </div>
+            <div class="mobile-menu fix"></div>
+            <div class="offcanvas__action">
+
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- offcanvas area end -->      
+    <div class="body-overlay"></div>
+    <!-- offcanvas area end -->
+    <main>
+
+
+        <!-- slider-area-start -->
+        <div class="slider-area">
+            <div class="swiper-container slider__active">
+                
+                <div class="slider-wrapper swiper-wrapper">
+                    {% for i in sliders %}
+                    <div class="single-slider swiper-slide slider-height d-flex align-items-center" data-background="{{i.image.url}}" style="height:700px;">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-5">
+                                    <div class="slider-content">
+                                        <div class="slider-top-btn" data-animation="fadeInLeft" data-delay="1.5s">
+                                            <a href="product-details.html" class="st-btn b-radius">{{i.line_1}}</a>
+                                        </div>
+                                        <h2 data-animation="fadeInLeft" data-delay="1.7s" class="pt-15 slider-title pb-5">{{i.line_2}} <br> {{i.line_3}}</h2>
+                                        <p class="pr-20 slider_text" data-animation="fadeInLeft" data-delay="1.9s">{{i.line_4}}</p>
+                                        <div class="slider-bottom-btn mt-75">
+                                            <a data-animation="fadeInUp" data-delay="1.15s" href="{{i.link}}" class="st-btn-b b-radius">Discover now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /single-slider -->
+                    {% endfor %}
+
+                    
+                    <div class="main-slider-paginations"></div>
+                </div>
+            </div>
+        </div>
+        <!-- slider-area-end -->
+
+
+
+        <!-- features__area-start -->
+        <section class="features__area pt-20">
+            <div class="container">
+                <div class="row row-cols-xxl-4 row-cols-xl-4 row-cols-lg-4 row-cols-md-2 row-cols-sm-2 row-cols-1 gx-0">
+                    <div class="col">
+                        <div class="features__item d-flex white-bg">
+                            <div class="features__icon mr-20">
+                                <i class="fas fa-ambulance"></i>
+                            </div>
+                            <div class="features__content">
+                                <h6>Ambulance Services</h6>
+                                <p>24*7 Emergency </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="features__item d-flex white-bg">
+                            <div class="features__icon mr-20">
+                                <i class="fal fa-money-check"></i>
+                            </div>
+                            <div class="features__content">
+                                <h6>PHARMACY (Medical Store)</h6>
+                                <p>24*7 OPEN</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="features__item d-flex white-bg">
+                            <div class="features__icon mr-20">
+                                <i class="fal fa-comments-alt"></i>
+                            </div>
+                            <div class="features__content">
+                                <h6> HELP CENTER</h6>
+                                <p>24*7 OPEN</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="features__item features__item-last d-flex white-bg">
+                            <div class="features__icon mr-20">
+                                <i class="fad fa-user-headset"></i>
+                            </div>
+                            <div class="features__content">
+                                <h6>FRIENDLY SERVICES</h6>
+                                <p>Choose your favourite doctor</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- features__area-end -->
+        
+        <!-- banner__area-start -->
+        <section class="banner__area pt-20 pb-10">
+            <div class="container">
+                <div class="row">
+                    {% for b in banners %}
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+                        <div class="banner__item p-relative w-img mb-30">
+                            <div class="banner__img">
+                                <a href="product-details.html"><img src="{{b.image.url}}" alt=""></a>
+                            </div>
+                            <div class="banner__content">
+                                <h6><a href="product-details.html">{{b.line_1}} <br><br>{{b.line_2}}</a></h6>
+                                <h6>{{b.line_3}}</h6>
+                                <p>{{b.line_4}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    
+                </div>
+            </div>
+        </section>
+        <!-- banner__area-end -->
+                <!-- blog-area-start -->
+                <div class="blog-area pt-55 pb-75">
+                    <div class="container 0">
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="section__head d-flex justify-content-between mb-30">
+                                    <div class="section__title section__title-2">
+                                        <h5 class="st-titile">Our Services</h5>
+                                    </div>
+                                    <div class="button-wrap button-wrap-2">
+                                        <a href="{% url 'service' %}">See All Services <i class="fal fa-chevron-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            {% for i in service %}
+                            <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-4">
+                                <div class="single-smblog mb-30">
+                                    <div class="smblog-thum">
+                                        <div class="blog-image blog-image-2 w-img">
+                                            <a href="{{i.get_absolute_url}}"><img src="{{i.future_image.url}}"  style="height:250px;" alt=""></a>
+                                        </div>
+                                        <div class="blog-tag">
+                                            <a href="blog.html">{{i.department}}</a>
+                                        </div>
+                                    </div>
+                                    <div class="smblog-content smblog-content-2">
+                                        <h6><a href="{{i.get_absolute_url}}l">{{i.hindi_name}}</a></h6>
+                                        <span class="author mb-10"> <a href="{{i.get_absolute_url}}"></a></span>
+                                        <div class="post-readmore">
+                                            <a href="{{i.get_absolute_url}}"> Read More <span class="icon"></span></a>
+                                        </div>
+                                        <div class="smblog-foot pt-15">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <!-- blog-area-end -->
+        
+
+       <br><br>
+        <!-- banner__area-start -->
+        <section class="banner__area banner__area-d pb-10">
+            <div class="container">
+                <div class="row">
+                    {% for b in banners_2 %}
+                    <div class="col-xl-6 col-lg-6 col-md-12">
+                        <div class="banner__item p-relative mb-30 w-img">
+                            <div class="banner__img">
+                                <a href="product-details.html"><img src="{{b.image.url}}" alt=""></a>
+                            </div>
+                            <div class="banner__content">
+                                <span>{{b.name}}</span>
+                                <h6><a href="product-details.html">{{b.line_1}}</a></h6>
+                                <p>{{b.line_2}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        <!-- banner__area-end -->
+            <br>
+
+        <!-- slider-area-start -->
+        <div class="slider-area light-bg-s pt-60">
+            <div class="container custom-conatiner">
+                <div class="row">
+                    <div class="col-xl-7">
+                        <div class="swiper-container slider__active pb-30">
+                            <div class="slider-wrapper swiper-wrapper">
+                                {% for i in upcoming %}
+                                <div class="single-slider swiper-slide b-radius-2 slider-height-2 d-flex align-items-center" data-background="{{i.image.url}}">
+                                    <div class="slider-content slider-content-2">
+                                        <h2 data-animation="fadeInLeft" data-delay="1.7s" class="pt-15 slider-title pb-5">{{i.event}}<br> {{i.date}}</h2>
+                                        <p class="pr-20 slider_text" data-animation="fadeInLeft" data-delay="1.9s">{{i.description}}</p>
+                                        <div class="slider-bottom-btn mt-65">
+                                            <a data-animation="fadeInUp" data-delay="1.15s" href="shop.html" class="st-btn-border b-radius-2">{{i.name}}</a>
+                                        </div>
+                                    </div>
+                                </div><!-- /single-slider -->
+                                {% endfor %}
+                                <div class="main-slider-paginations"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-5">
+                        <div class="swiper-container slider__active pb-30">
+                            <div class="slider-wrapper swiper-wrapper">
+                                {% for i in completate %}
+                                <div class="single-slider swiper-slide b-radius-2 slider-height-2 d-flex align-items-center" data-background="{{i.image.url}}">
+                                    <div class="slider-content slider-content-2">
+                                        <h2 data-animation="fadeInLeft" data-delay="1.7s" class="pt-15 slider-title pb-5">{{i.event}}<br> {{i.date}}</h2>
+                                        <p class="pr-20 slider_text" data-animation="fadeInLeft" data-delay="1.9s">{{i.description}}</p>
+                                        <div class="slider-bottom-btn mt-65">
+                                            <a data-animation="fadeInUp" data-delay="1.15s" href="shop.html" class="st-btn-border b-radius-2">{{i.name}}</a>
+                                        </div>
+                                    </div>
+                                </div><!-- /single-slider -->
+                                {% endfor %}
+                                <div class="main-slider-paginations"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- slider-area-end -->
+        <br><br>
+        <section class="topsell__area-1 pt-15">
+            <div class="container">
+            </div>
+        </section>
+
+        <!-- topsell__area-start -->
+
+        <!-- topsell__area-end -->
+
+                <!-- banner__area-start -->
+                <section class="banner__area banner__area-d pb-10">
+                    <div class="container">
+                        <div class="row">
+
+                            {% for i in doctors %}
+                            <div class="col-xl-6 col-lg-6 col-md-12">
+                                <div class="banner__item p-relative w-img mb-30">
+                                    <div class="banner__img">
+                                        <a href="{{i.get_absolute_url}}"><img src="{{i.image.url}}" style="height:250px;" alt=""></a>
+                                    </div>
+                                    <div class="banner__content">
+                                        <span>{{i.speciality}}</span>
+                                        <h6><a href="{{i.get_absolute_url}}">{{i.name}}</a></h6>
+                                        <p>{{i.qualification}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </section>
+                <!-- banner__area-end -->
+  
+
+        <!-- moveing-text-area-start -->
+        <section class="moveing-text-area">
+            <div class="container">
+                <div class="ovic-running">
+                    <div class="wrap">
+                        <div class="inner">
+                            {% for i in content_clider %}
+                            <p class="item">{{i.contant_1}}</p>
+                            <p class="item">{{i.contant_2}}</p>
+                            <p class="item">{{i.contant_3}}</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- moveing-text-area-end -->
+        <br>
+        <!-- recomand-product-area-start -->
+        <section class="recomand-product-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="section__head d-flex justify-content-between mb-10">
+                            <div class="section__title">
+                                <h5 class="st-titile">Media Gallery</h5>
+                            </div>
+                            <div class="button-wrap">
+                                <a href="shop.html">See All Product <i class="fal fa-chevron-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-0">
+                    <div class="product-bs-slider-2">
+                        <div class="product-slider-3 swiper-container">
+                            {% for i in meida_galler %}
+                            <div class="swiper-wrapper">
+                                <div class="product__item mb-20 swiper-slide">
+                                    <div class="product__thumb fix">
+                                        <div class="product-image w-img">
+                                            <a href="product-details.html">
+                                                <img src="{{i.image.url}}" alt="product" style="height: 180px;">
+                                            </a>
+                                        </div>
+                                        <div class="product__offer">
+                                        <span class="discount">{{i.title}}</span>
+                                        </div>                                        
+                                    </div>
+                                    
+                                    <div class="product__content">
+                                        <p>{{i. | safe}}</p>
+                                        
+                                    </div>
+                                    
+                                </div>
+                                {% endfor %} 
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- recomand-product-area-end -->        
+       
+ 
+        <!-- shop modal start -->
+        <div class="modal fade" id="productModalId" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered product__modal" role="document">
+                <div class="modal-content">
+                    <div class="product__modal-wrapper p-relative">
+                        <div class="product__modal-close p-absolute">
+                            <button data-bs-dismiss="modal"><i class="fal fa-times"></i></button>
+                        </div>
+                        <div class="product__modal-inner">
+                            <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="product__modal-box">
+                                    <div class="tab-content" id="modalTabContent">
+                                        <div class="tab-pane fade show active" id="nav1" role="tabpanel" aria-labelledby="nav1-tab">
+                                            <div class="product__modal-img w-img">
+                                                <img src="{% static 'assets/img/quick-view/quick-view-1.jpg' %}" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="nav2" role="tabpanel" aria-labelledby="nav2-tab">
+                                            <div class="product__modal-img w-img">
+                                                <img src="{% static 'assets/img/quick-view/quick-view-2.jpg' %}" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="nav3" role="tabpanel" aria-labelledby="nav3-tab">
+                                            <div class="product__modal-img w-img">
+                                                <img src="{% static 'assets/img/quick-view/quick-view-3.jpg' %}" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="nav4" role="tabpanel" aria-labelledby="nav4-tab">
+                                            <div class="product__modal-img w-img">
+                                                <img src="{% static 'assets/img/quick-view/quick-view-4.jpg' %}" alt="">
+                                            </div>
+                                        </div>
+                                        </div>
+                                    <ul class="nav nav-tabs" id="modalTab" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link active" id="nav1-tab" data-bs-toggle="tab" data-bs-target="#nav1" type="button" role="tab" aria-controls="nav1" aria-selected="true">
+                                                <img src="{% static 'assets/img/quick-view/quick-nav-1.jpg' %}" alt="">
+                                            </button>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="nav2-tab" data-bs-toggle="tab" data-bs-target="#nav2" type="button" role="tab" aria-controls="nav2" aria-selected="false">
+                                            <img src="{% static 'assets/img/quick-view/quick-nav-2.jpg' %}" alt="">
+                                            </button>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="nav3-tab" data-bs-toggle="tab" data-bs-target="#nav3" type="button" role="tab" aria-controls="nav3" aria-selected="false">
+                                            <img src="{% static 'assets/img/quick-view/quick-nav-3.jpg' %}" alt="">
+                                            </button>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="nav4-tab" data-bs-toggle="tab" data-bs-target="#nav4" type="button" role="tab" aria-controls="nav4" aria-selected="false">
+                                            <img src="{% static 'assets/img/quick-view/quick-nav-4.jpg' %}" alt="">
+                                            </button>
+                                        </li>
+                                        </ul>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="product__modal-content">
+                                    <h4><a href="product-details.html">Samsung C49J89: £875, Debenhams Plus</a></h4>
+                                    <div class="product__review d-sm-flex">
+                                        <div class="rating rating__shop mb-10 mr-30">
+                                        <ul>
+                                            <li><a href="#"><i class="fal fa-star"></i></a></li>
+                                            <li><a href="#"><i class="fal fa-star"></i></a></li>
+                                            <li><a href="#"><i class="fal fa-star"></i></a></li>
+                                            <li><a href="#"><i class="fal fa-star"></i></a></li>
+                                            <li><a href="#"><i class="fal fa-star"></i></a></li>
+                                        </ul>
+                                        </div>
+                                        <div class="product__add-review mb-15">
+                                        <span>01 review</span>
+                                        </div>
+                                    </div>
+                                    <div class="product__price">
+                                        <span>$109.00 – $307.00</span>
+                                    </div>
+                                    <div class="product__modal-des mt-20 mb-15">
+                                        <ul>
+                                            <li><a href="#"><i class="fas fa-circle"></i> Bass and Stereo Sound.</a></li>
+                                            <li><a href="#"><i class="fas fa-circle"></i> Display with 3088 x 1440 pixels resolution.</a></li>
+                                            <li><a href="#"><i class="fas fa-circle"></i> Memory, Storage & SIM: 12GB RAM, 256GB.</a></li>
+                                            <li><a href="#"><i class="fas fa-circle"></i> Androi v10.0 Operating system.</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="product__stock mb-20">
+                                        <span class="mr-10">Availability :</span>
+                                        <span>1795 in stock</span>
+                                    </div>
+                                    <div class="product__modal-form">
+                                        <form action="#">
+                                        <div class="pro-quan-area d-lg-flex align-items-center">
+                                            <div class="product-quantity mr-20 mb-25">
+                                                <div class="cart-plus-minus p-relative"><input type="text" value="1" /></div>
+                                            </div>
+                                            <div class="pro-cart-btn mb-25">
+                                                <button class="cart-btn" type="submit">Add to cart</button>
+                                            </div>
+                                        </div>
+                                        </form>
+                                    </div>
+                                    <div class="product__stock mb-30">
+                                        <ul>
+                                            <li><a href="#">
+                                                <span class="sku mr-10">SKU:</span>
+                                                <span>Samsung C49J89: £875, Debenhams Plus</span></a>
+                                            </li>
+                                            <li><a href="#">
+                                                <span class="cat mr-10">Categories:</span>
+                                                <span>iPhone, Tablets</span></a>
+                                            </li>
+                                            <li><a href="#">
+                                                <span class="tag mr-10">Tags:</span>
+                                                <span>Smartphone, Tablets</span></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- shop modal end -->
+
+    
+
+
+
+{% endblock content %}
