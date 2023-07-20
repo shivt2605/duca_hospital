@@ -41,7 +41,9 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',    
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = 'duca_hospital.urls'
@@ -75,6 +77,16 @@ DATABASES = {
     }
 }
 
+#DATABASES = {
+   #'default': {
+       #'ENGINE': 'django.db.backends.postgresql',
+       #'NAME': 'bestchoicesolution',
+       #'USER': 'bestchoicesolution',
+       #'PASSWORD': 'TIWARI@123',
+       #'HOST': 'localhost',
+       #'PORT': '',
+   #}
+#}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
