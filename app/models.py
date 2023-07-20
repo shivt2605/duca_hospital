@@ -1,6 +1,5 @@
 from email.mime import image
 from email.policy import default
-from turtle import title
 from unicodedata import name
 from django.db import models
 
